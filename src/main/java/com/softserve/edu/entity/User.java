@@ -1,5 +1,7 @@
 package com.softserve.edu.entity;
 
+import java.util.Objects;
+
 public class User {
     private long id;
     private String firstName;
@@ -19,7 +21,7 @@ public class User {
         this.id = id;
         return this;
     }
-    
+
     public long getId() {
         return id;
     }
@@ -39,7 +41,6 @@ public class User {
     public String getRoleName() {
         return roleName;
     }
-
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -47,6 +48,10 @@ public class User {
         //
         // Code
         //
+        result = prime * result +((firstName == null)? 0:firstName.hashCode())+
+                ((lastName== null)?0:lastName.hashCode()) + ((companyName == null)? 0 : companyName.hashCode()
+                +((roleName==null)?0:roleName.hashCode()));
+
         return result;
     }
 
@@ -60,17 +65,22 @@ public class User {
         }
         User other = (User) obj;
         boolean result = true;
-        //
-        // Code
-        //
+        result = id == other.id && Objects.equals(firstName, other.firstName)
+                && Objects.equals(lastName, other.lastName) && Objects.equals(companyName, other.companyName)
+                && Objects.equals(roleName, other.roleName);
+
         return result;
     }
 
+
+
+
+
     @Override
     public String toString() {
-        return "\nUser [id=" + id 
-                + ", firstName=" + firstName 
-                + ", lastName=" + lastName 
+        return "\nUser [id=" + id
+                + ", firstName=" + firstName
+                + ", lastName=" + lastName
                 + ", companyName=" + companyName
                 + ", roleName=" + roleName + "]";
     }

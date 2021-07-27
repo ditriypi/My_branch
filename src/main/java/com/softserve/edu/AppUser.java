@@ -1,5 +1,6 @@
 package com.softserve.edu;
 
+import java.util.Arrays;
 import java.util.List;
 
 import com.softserve.edu.dao.FileTools;
@@ -12,6 +13,10 @@ public class AppUser {
     public static void main(String[] args) {
         FileTools fileTools = new FileTools("users.csv");
         UserService userService = new UserService("mydb", fileTools);
+         for(String i : fileTools.readRows()) {
+             System.out.println(userService.getNodes(i));
+         }
+
         //
         List<User> fileUsers = userService.readFromFile();
         System.out.println("Saved: " + userService.saveToDB(fileUsers));

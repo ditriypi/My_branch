@@ -1,10 +1,6 @@
 package com.softserve.edu.service;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import com.softserve.edu.dao.FileTools;
 import com.softserve.edu.dao.UserDao;
@@ -23,12 +19,17 @@ public class UserService {
     }
 
     public List<String> getNodes(String row) {
-        List<String> nodes = new ArrayList<>();
         // Split row to List<String>;
         //
         // Code
         //
-        return nodes;
+
+           if(Character.isUpperCase(row.charAt(0))) {
+
+               String[] words = row.split(CSV_SPLIT);
+               return new ArrayList<>(Arrays.asList(words));
+           }
+        return new ArrayList<>(Collections.singletonList(row));
     }
 
     public User createFromRow(String row) {
@@ -90,5 +91,5 @@ public class UserService {
         //
         return users;
     }
-    
+
 }
