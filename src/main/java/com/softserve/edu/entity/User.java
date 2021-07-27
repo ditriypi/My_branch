@@ -40,17 +40,20 @@ public class User {
         return roleName;
     }
 
-    @Override
+   @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
         //
         // Code
         //
+        result = prime * result +((firstName == null)? 0:firstName.hashCode())+
+        ((lastName== null)?0:lastName.hashCode()) + ((companyName == null)? 0 : companyName.hashCode());
+
         return result;
     }
-
-    @Override
+    
+@Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -60,11 +63,16 @@ public class User {
         }
         User other = (User) obj;
         boolean result = true;
-        //
-        // Code
-        //
+       result = id == other.id && Objects.equals(firstName, other.firstName)
+               && Objects.equals(lastName, other.lastName) && Objects.equals(companyName, other.companyName)
+               && Objects.equals(roleName, other.roleName);
+
         return result;
     }
+   
+    
+    
+    
 
     @Override
     public String toString() {
