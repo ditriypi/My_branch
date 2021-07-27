@@ -39,8 +39,7 @@ public class User {
     public String getRoleName() {
         return roleName;
     }
-
-   @Override
+ @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -48,7 +47,8 @@ public class User {
         // Code
         //
         result = prime * result +((firstName == null)? 0:firstName.hashCode())+
-        ((lastName== null)?0:lastName.hashCode()) + ((companyName == null)? 0 : companyName.hashCode());
+        ((lastName== null)?0:lastName.hashCode()) + ((companyName == null)? 0 : companyName.hashCode()
+        +((roleName==null)?0:roleName.hashCode()));
 
         return result;
     }
